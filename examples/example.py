@@ -11,7 +11,7 @@ gain_x, offset_x = -1, 1
 gain_y, offset_y = 0, 0
 
 print 'testing PanelCom'
-ctlr = PanelCom(0)
+ctlr = PanelCom()
 
 ctlr.SetPatternID(pattern_id)
 ctlr.SetGainOffset(gain_x, offset_x, gain_y, offset_y)
