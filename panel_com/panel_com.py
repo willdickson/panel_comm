@@ -30,7 +30,7 @@ class PanelCom:
                                          #that this isn't portable anymore
                                          #if no port is specified an unconfigured
                                          #an closed serial port object is created
-            baudrate=19200,              #baudrate
+            baudrate=921600,             #baudrate
             bytesize=serial.EIGHTBITS,   #number of databits
             parity=serial.PARITY_NONE,   #enable parity checking
             stopbits=serial.STOPBITS_ONE,#number of stopbits
