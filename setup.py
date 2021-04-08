@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-setup(name='panel_com',
+setup(name='panel_comm',
       version='0.1', 
       description = "provides a serail interface to Michael Reiser's panel controller",
       author = 'William Dickson',

@@ -1,0 +1,8 @@
+README
+setup.py
+panel_comm/__init__.py
+panel_comm/panel_comm.py
+panel_comm.egg-info/PKG-INFO
+panel_comm.egg-info/SOURCES.txt
+panel_comm.egg-info/dependency_links.txt
+panel_comm.egg-info/top_level.txt
