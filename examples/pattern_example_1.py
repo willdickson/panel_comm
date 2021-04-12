@@ -1,14 +1,12 @@
-#!/usr/bin/env python
-#
-# Example using panel_com
 from panel_comm import PanelComm
 import time
 
-sleep_t = 5.0
-com_port_num = 0
 pattern_id = 1
-gain_x, offset_x = 0.0, 0.0
-gain_y, offset_y = 0.0, 0.1
+gain_x = 0.0  
+offset_x = 0.0
+gain_y = 0.0 
+offset_y = 0.1
+sleep_t = 5.0
 
 ctlr = PanelComm(baudrate=921600)
 

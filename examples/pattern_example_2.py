@@ -1,16 +1,11 @@
-#!/usr/bin/env python
-#
-# Example using panel_com
 from panel_comm import PanelComm
 import time
 
-sleep_t = 0.2
-com_port_num = 0
 pattern_id = 1
-gain_x, offset_x = 0.0, 0.0
+gain_x = 0.0  
+offset_x = 0.0
 gain_y = 0.0
-
-
+sleep_t = 0.2
 num_test = 20
 
 offset_y_list = [0.05*i for i in range(num_test)]

@@ -42,29 +42,48 @@ class PanelComm(serial.Serial):
             raise ValueError('patternid must be > 0')
         self.send(bytearray([0x02, 0x03, patternid]))
 
-    def blink_led( self ): 
+    def blink_led(self): 
         self.send(bytearray([0x01, 0x50]))
 
-    def all_on( self ): 
+    def all_on(self): 
         self.send(bytearray([0x01, 0xFF]))
 
-    def all_off( self ): 
+    def all_off(self): 
         self.send(bytearray([0x01, 0x00]))
 
-    def greenscale( self, level ):
+    def greenscale(self, level):
         if type(level) != int: 
             raise TypeError('level must be an int')
         if level < 0 or level > 7: 
             raise ValueError('level must be in range [0,1,2,3,4,5,6,7]')
         self.send(bytearray([0x01, 0x40, level]))
 
-    def start( self ): 
+    def start(self): 
         self.send(bytearray([0x01, 0x20]))
 
-    def stop( self ): 
+    def stop(self): 
         self.send(bytearray([0x01, 0x30]))
 
-    def reset( self ): 
+    def show_bus_number(self):
+        self.send(bytearray([0x01, 0x16]))
+
+    def adc_test(self,chan):
+        if chan < 0 or chan > 7:
+            raise ValueError('chan must be between in range [0,1,2,3,4,5,6,7]')
+        self.send(bytearray([0x02, 0x04, chan]))
+
+    def dio_test(self,chan):
+        if chan < 0 or chan > 7:
+            raise ValueError('chan must be between in range [0,1,2,3,4,5,6,7]')
+        self.send(bytearray([0x02, 0x05, chan]))
+
+    def get_adc_value(self,chan):
+        if chan < 1 or chan > 6:
+            # Why 1-6 for this command???? check firmware, also how is value returned?
+            raise ValueError('chan must be between in range [1,2,3,4,5,6]')
+        self.send(bytearray([0x02, 0x10, chan]))
+
+    def reset(self): 
         self.send(bytearray([0x02, 0x01, 0x00]))
 
     def set_mode( self, modex, modey ):
@@ -86,7 +105,7 @@ class PanelComm(serial.Serial):
         msg = bytearray([0x05, 0x71, gainx_num, offsetx_num, gainy_num, offsety_num])
         self.send(msg)
 
-    def set_positions(self,xpos,ypos):
+    def set_positions(self, xpos, ypos):
         if type(xpos) != int:
             raise TypeError('xpos must be int')
         if type(ypos) != int:
@@ -98,7 +117,7 @@ class PanelComm(serial.Serial):
         msg = bytearray([0x05, 0x70, xpos, 0x00, ypos, 0x00])
         self.send(msg)
 
-    def address( self, oldaddr, newaddr ):
+    def address(self, oldaddr, newaddr):
         if type(oldaddr) != int: 
             raise TypeError('oldaddr must be an int')
         if type(newaddr) != int:
